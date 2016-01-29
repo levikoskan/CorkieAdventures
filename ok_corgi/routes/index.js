@@ -19,7 +19,11 @@ router.get('/', function(req, res, next) {
 
   // USE MONGOOSE TO GET A RANDOM DOG FROM THE DATABASE, THEN RENDER THE VIEW IN THE DATABASE CALLBACK
 
-  Dog.find({ like: { $exists: false } }, function(err, data) {
+  Dog.find({
+    like: {
+      $exists: false
+    }
+  }, function(err, data) {
     if (err) console.log(err);
     var random = randomDog(data);
     // console.log(random.name);
@@ -49,8 +53,8 @@ router.get('/liked_dogs', function(req, res, next) {
       title: 'OKCorgi',
       arr: data
     });
-    console.log(data);
-    res.redirect('/');
+    // console.log(data);
+    // res.redirect('/');
   })
 })
 
@@ -73,17 +77,29 @@ router.post('/dogs', function(req, res, next) {
 
 });
 
+router.post('/:id', function(req, res, next) {
+  Dog.findById(req.params.id, function(err, dog) {
+    if (err) console.log(err);
+    dog.like = req.body.like;
+    // dog.like = undefined;
+    dog.save(function(err) {
+      if (err) console.log(err);
+    });
+  });
+  res.redirect('/');
+});
+
 router.post('/dogs/:id', function(req, res, next) {
   Dog.findById(req.params.id, function(err, dog) {
     if (err) console.log(err);
     //value of button
-    dog.like = req.body.like;
+    dog.like = undefined;
 
     dog.save(function(err) {
       if (err) console.log(err);
-      res.redirect('/');
     });
   });
+  res.redirect('/');
 });
 
 module.exports = router;

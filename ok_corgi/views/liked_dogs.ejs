@@ -5,6 +5,11 @@
       <li>
         <img src="<%= arr[i].photo_url %>" alt="">
         <%= arr[i].name %>
+        <form name="likes" action="/<%= arr[i]._id %>" method="POST">
+          <button type="submit">Unpaw</button>
+        </form>            
+
+        <%=  %>
       </li>
       <% } %>
   </ul>
