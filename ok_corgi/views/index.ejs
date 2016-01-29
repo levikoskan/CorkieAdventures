@@ -7,21 +7,19 @@
 
 
       <form id="button1" name="likes" action="/dogs/<%= id %>" method="POST">
-        <button type="submit" name="like" value="false">Paw left</button>
+        <button class="btn btn-primary btn-lg" type="submit" name="like" value="false">Paw left</button>
       </form>
       <form id="button2" name="likes" action="/dogs/<%= id %>" method="POST">
-        <button type="submit" name="like" value="true">Paw right</button>
+        <button class="btn btn-primary btn-lg" type="submit" name="like" value="true">Paw right</button>
       </form>
     </div>
 
-    <div><%= id %></div>
   </section>
 
   <section>
-    <h3>Dogs You've Liked</h3>
-    <ul><!-- LIKED DOG NAMES/PICS CAN GO HERE --></ul>
+    <a class="btn btn-primary btn-lg" id="doglink" href="/liked_dogs">Dogs you've liked</a>
   </section>
 
-  <a id="doglink" href="/liked_dogs">Click here</a>
+  
 
 <% include ./partials/footer %>
