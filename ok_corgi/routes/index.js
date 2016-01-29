@@ -33,6 +33,13 @@ router.get('/dog_form', function(req, res, next) {
   res.render('dog_form', { title: 'OKCorgi' });
 });
 
+  router.get('/liked_dogs', function(req, res, next){
+    Dog.find({ like: true }, function(err, dog){
+      if (err) console.log(err);
+    res.render('/liked_dogs', {arr: dog});
+    })
+  })
+
   // USE MONGOOSE TO SAVE A NEW DOG TO THE DATABASE, THEN REDIRECT TO THE ROOT URL
 router.post('/dogs', function(req, res, next) {
   var dogName = req.body.name;

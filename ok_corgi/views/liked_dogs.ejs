@@ -1,0 +1,11 @@
+
+<% include partials/header %>
+
+
+    <h1>Liked dogs.</h1>
+    <ul><% for (var i = 0; i < arr.length; i++)%>     // for each element in array
+        <li><img src="<%= arr[i].photo_url %>" alt=""><%= arr[i].name %></li>  // populate a list item in an unordered list
+    </ul>
+
+
+<% include partials/footer %>
