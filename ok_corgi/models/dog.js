@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 var dogSchema = new moongoose.Schema({
-  dog: {type:String, required: true },
+  // dog: {type:String, required: true },
   name: {type:String, required: true},
   photo_url: {type:String, required: true},
   like: {type:Boolean }
