@@ -21,6 +21,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// mongodb://<dbuser>:<dbpassword>@ds051615.mongolab.com:51615/okcorgi_app
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://'+process.env.W07LAB_MONGOLAB_USER+':'+process.env.W07LAB_MONGOLAB_PW+'@ds051615.mongolab.com:51615/okcorgi_app');
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
