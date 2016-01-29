@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 
   // USE MONGOOSE TO GET A RANDOM DOG FROM THE DATABASE, THEN RENDER THE VIEW IN THE DATABASE CALLBACK
 
-  Dog.find({}, function(err, data) {
+  Dog.find({ like: { $exists: false } }, function(err, data) {
     if (err) console.log(err);
     var random = randomDog(data);
     // console.log(random.name);
