@@ -1,15 +1,15 @@
 <% include ./partials/header %>
 
-  <section class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 main-corgi">
+  <section id="dogpound" class="row">
+    <div id="corgipic" class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 main-corgi">
       <h2>Do you like <%= name %>?</h2>
       <img src="<%= photo %>" alt="<%= name %>" class="corgi-banner img-responsive">
 
 
-      <form name="likes" action="/dogs/<%= id %>" method="POST">
+      <form id="button1" name="likes" action="/dogs/<%= id %>" method="POST">
         <button type="submit" name="like" value="false">Paw left</button>
-      </form>            
-      <form name="likes" action="/dogs/<%= id %>" method="POST">
+      </form>
+      <form id="button2" name="likes" action="/dogs/<%= id %>" method="POST">
         <button type="submit" name="like" value="true">Paw right</button>
       </form>
     </div>
@@ -22,5 +22,6 @@
     <ul><!-- LIKED DOG NAMES/PICS CAN GO HERE --></ul>
   </section>
 
-  <a href="/liked_dogs">Click here</a>
+  <a id="doglink" href="/liked_dogs">Click here</a>
+
 <% include ./partials/footer %>
