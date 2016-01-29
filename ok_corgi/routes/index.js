@@ -14,8 +14,6 @@ function randomDog(dogArray) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // name = req.params.name || "Friend";
-  // var color = randomColor();
 
   // USE MONGOOSE TO GET A RANDOM DOG FROM THE DATABASE, THEN RENDER THE VIEW IN THE DATABASE CALLBACK
 
