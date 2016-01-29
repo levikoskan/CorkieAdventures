@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
   Dog.find({}, function(err, data) {
     if (err) console.log(err);
     var random = randomDog(data);
-    console.log(random.name);
+    // console.log(random.name);
     res.render('index', { title: 'OKCorgi', name: random.name, photo: random.photo_url, id: random._id });
   });
 });
@@ -56,27 +56,13 @@ router.post('/dogs/:id', function(req, res, next) {
   Dog.findById(req.params.id, function(err, dog) {
     if (err) console.log(err);
     //value of button
-    dog.like = req.query.like;
+    dog.like = req.body.like;
+
     dog.save(function (err) {
       if (err) console.log(err);
       res.redirect('/');
     });
   });
-
-
-
-  // var dogLike = req.body.like;
-  // var newDog = Dog({
-  //   like: dogLike,
-  // });
-
-  // newDog.save(function(err){
-  //   if (err) console.log(err);
-
-  //   // res.redirect('/');
-  //   res.send('Dog Saved!');
-  // })
-
 });
 
 module.exports = router;
