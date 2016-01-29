@@ -14,7 +14,7 @@ function randomDog(dogArray) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  name = req.params.name || "Friend";
+  // name = req.params.name || "Friend";
   // var color = randomColor();
 
   // USE MONGOOSE TO GET A RANDOM DOG FROM THE DATABASE, THEN RENDER THE VIEW IN THE DATABASE CALLBACK
@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
     if (err) console.log(err);
     var random = randomDog(data);
     console.log(random.name);
-    res.render('index', { title: 'OKCorgi', name: random.name, photo: random.photo_url });
+    res.render('index', { title: 'OKCorgi', name: random.name, photo: random.photo_url, id: random._id });
   });
 });
 
@@ -34,7 +34,7 @@ router.get('/dog_form', function(req, res, next) {
 });
 
   // USE MONGOOSE TO SAVE A NEW DOG TO THE DATABASE, THEN REDIRECT TO THE ROOT URL
-router.post('/', function(req, res, next) {
+router.post('/dogs', function(req, res, next) {
   var dogName = req.body.name;
   var dogPhoto = req.body.photo_url;
 
@@ -49,6 +49,33 @@ router.post('/', function(req, res, next) {
     // res.redirect('/');
     res.send('Dog Saved!');
   })
+
+});
+
+router.post('/dogs/:id', function(req, res, next) {
+  Dog.findById(req.params.id, function(err, dog) {
+    if (err) console.log(err);
+    //value of button
+    dog.like = req.query.like;
+    dog.save(function (err) {
+      if (err) console.log(err);
+      res.redirect('/');
+    });
+  });
+
+
+
+  // var dogLike = req.body.like;
+  // var newDog = Dog({
+  //   like: dogLike,
+  // });
+
+  // newDog.save(function(err){
+  //   if (err) console.log(err);
+
+  //   // res.redirect('/');
+  //   res.send('Dog Saved!');
+  // })
 
 });
 

@@ -4,9 +4,15 @@
     <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 main-corgi">
       <h2>Do you like <%= name %>?</h2>
       <img src="<%= photo %>" alt="<%= name %>" class="corgi-banner img-responsive">
-      <button id="paw-left">Paw Left</button>
-      <button id="paw-right">Paw Right</button>
+
+
+      <form name="likes" action="/dogs/<%= id %>" method="POST">
+        <button type="submit" name="like" value="false">Paw left</button>
+        <button type="submit" name="like" value="true">Paw right</button>
+      </form>
     </div>
+
+    <div><%= id %></div>
   </section>
 
   <section>
@@ -14,4 +20,5 @@
     <ul><!-- LIKED DOG NAMES/PICS CAN GO HERE --></ul>
   </section>
 
+  <a href="/dog_form">Click here</a>
 <% include ./partials/footer %>
