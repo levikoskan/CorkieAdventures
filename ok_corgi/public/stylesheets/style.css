@@ -55,8 +55,9 @@ ul{
   margin-right: 420px !important;
 }
 
-#button2{
+#btnright {
   display: inline-block;
   margin: 0 auto;
-  padding-top: 10px !important;
+  margin-right: 0px !important;
+  margin-left: 500px !important;
 }

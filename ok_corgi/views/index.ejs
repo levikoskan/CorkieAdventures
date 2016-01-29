@@ -6,10 +6,10 @@
       <img src="<%= photo %>" alt="<%= name %>" class="corgi-banner img-responsive">
 
 
-      <form id="button1" name="likes" action="/dogs/<%= id %>" method="POST">
+      <form id="btnleft" name="likes" action="/dogs/<%= id %>" method="POST">
         <button type="submit" name="like" value="false">Paw left</button>
       </form>
-      <form id="button2" name="likes" action="/dogs/<%= id %>" method="POST">
+      <form id="btnright" name="likes" action="/dogs/<%= id %>" method="POST">
         <button type="submit" name="like" value="true">Paw right</button>
       </form>
     </div>
